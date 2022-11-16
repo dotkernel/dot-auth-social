@@ -1,0 +1,45 @@
+{
+    "name": "dotkernel/dot-auth-social",
+    "type": "library",
+    "description": "Authentication wrapper for social providers",
+    "license": "MIT",
+    "homepage": "https://github.com/dotkernel/dot-auth-social",
+    "authors": [
+        {
+            "name": "DotKernel Team",
+            "email": "team@dotkernel.com"
+        }
+    ],
+    "keywords": [
+        "auth",
+        "social",
+        "login",
+        "google",
+        "facebook",
+        "mezzio",
+        "dotkernel"
+    ],
+    "require": {
+        "php": "~7.4.0 || ~8.0.0 || ~8.1.0",
+        "laminas/laminas-servicemanager": "^3.10",
+        "league/oauth2-facebook" : "^2.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dot\\AuthSocial\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "DotTest\\AuthSocial\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": [
+            "phpunit tests/*.php"
+        ]
+    }
+}

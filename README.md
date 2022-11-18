@@ -3,8 +3,8 @@
 This package is a wrapper for [thephpleague/oauth2-client](https://github.com/thephpleague/oauth2-client) social providers.
 It's goal is to authenticate users though facebook and return credentials and user details.
 
-![OSS Lifecycle](https://img.shields.io/osslifecycle/dotkernel/dot-social-auth)
-![PHP from Packagist (specify version)](https://img.shields.io/packagist/php-v/dotkernel/dot-social-auth/1.0.0)
+![OSS Lifecycle](https://img.shields.io/osslifecycle/dotkernel/dot-auth-social)
+![PHP from Packagist (specify version)](https://img.shields.io/packagist/php-v/dotkernel/dot-auth-social)
 
 [![GitHub issues](https://img.shields.io/github/issues/dotkernel/dot-auth-social)](https://github.com/dotkernel/dot-social-auth/issues)
 [![GitHub forks](https://img.shields.io/github/forks/dotkernel/dot-auth-social)](https://github.com/dotkernel/dot-social-auth/network)

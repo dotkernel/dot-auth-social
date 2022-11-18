@@ -15,7 +15,7 @@ It's goal is to authenticate users though facebook and return credentials and us
 
 Run the following command in your project directory
 ```bash
-$ composer require dotkernel/dotkernel/dot-auth-social
+$ composer require dotkernel/dot-auth-social
 ```
 
 After installing, add the `ConfigProvider` class to your configuration aggregate.

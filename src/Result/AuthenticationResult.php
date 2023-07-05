@@ -1,14 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Dot\AuthSocial\Result;
 
 use DateTimeImmutable;
 use Throwable;
 
-/**
- * Class AuthenticationResult
- * @package Dot\AuthSocial\Result
- */
+use function is_string;
+use function strval;
+use function trim;
+
 class AuthenticationResult implements AuthenticationResultInterface
 {
     private ?array $messages;
@@ -34,13 +36,13 @@ class AuthenticationResult implements AuthenticationResultInterface
         ?string $refreshToken = null,
         ?int $expiresIn = null
     ) {
-        $this->messages = $messages;
-        $this->identity = $identity;
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        $this->accessToken = $accessToken;
+        $this->messages     = $messages;
+        $this->identity     = $identity;
+        $this->firstName    = $firstName;
+        $this->lastName     = $lastName;
+        $this->accessToken  = $accessToken;
         $this->refreshToken = $refreshToken;
-        $this->expiresIn = $expiresIn;
+        $this->expiresIn    = $expiresIn;
     }
 
     public function isValid(): bool
@@ -103,7 +105,7 @@ class AuthenticationResult implements AuthenticationResultInterface
         return new self([], $identity, $firstName, $lastName, $accessToken, $refreshToken, $expiresIn);
     }
 
-    public static function failed($messages): self
+    public static function failed(?string $messages): self
     {
         if (is_string($messages)) {
             return new self([$messages]);
@@ -115,14 +117,13 @@ class AuthenticationResult implements AuthenticationResultInterface
     public function getArrayCopy(): array
     {
         return [
-            'identity' => $this->getIdentity(),
-            'first_name' => $this->getFirstName(),
-            'last_name' => $this->getLastName(),
-            'access_token' => $this->getAccessToken(),
+            'identity'      => $this->getIdentity(),
+            'first_name'    => $this->getFirstName(),
+            'last_name'     => $this->getLastName(),
+            'access_token'  => $this->getAccessToken(),
             'refresh_token' => $this->getRefreshToken(),
-            'expires_at' => ($this->getExpiresAt() instanceof DateTimeImmutable) ?
-                $this->getExpiresAt()->format('Y-m-d H:i:s') :
-                null,
+            'expires_at'    => $this->getExpiresAt() instanceof DateTimeImmutable ?
+                $this->getExpiresAt()->format('Y-m-d H:i:s') : null,
         ];
     }
 }

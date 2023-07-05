@@ -1,21 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DotTest\AuthSocial;
 
+use DateTimeImmutable;
 use Dot\AuthSocial\Result\AuthenticationResultInterface;
 use Dot\AuthSocial\Service\FacebookService as Subject;
-use League\OAuth2\Client\Provider\FacebookUser;
+use Exception;
 use League\OAuth2\Client\Provider\Facebook;
+use League\OAuth2\Client\Provider\FacebookUser;
 use League\OAuth2\Client\Token\AccessToken;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use DateTimeImmutable;
-use Exception;
 
-/**
- * Class FacebookAuthenticationServiceTest
- * @package DotTest\AuthSocial
- */
 class FacebookAuthenticationServiceTest extends TestCase
 {
     private AccessToken|MockObject $accessToken;

@@ -12,10 +12,8 @@
     <arg value="p"/>
 
     <!-- Paths to check -->
-    <file>bin</file>
-    <file>config</file>
     <file>src</file>
-    <file>test</file>
+    <file>tests</file>
 
     <!-- Include all rules from the Laminas Coding Standard -->
     <rule ref="LaminasCodingStandard"/>

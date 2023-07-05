@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Dot\AuthSocial\Service;
 
 use Dot\AuthSocial\Result\AuthenticationResult;
@@ -7,10 +9,6 @@ use League\OAuth2\Client\Provider\Facebook as Provider;
 use League\OAuth2\Client\Token\AccessToken;
 use Throwable;
 
-/**
- * Class FacebookService
- * @package Dot\AuthSocial\Service
- */
 class FacebookService implements AuthenticationServiceInterface
 {
     protected Provider $provider;
@@ -33,7 +31,7 @@ class FacebookService implements AuthenticationServiceInterface
             /** @var AccessToken $token */
             $token = $this->provider->getAccessToken('authorization_code', ['code' => $code]);
             $token = $this->provider->getLongLivedAccessToken($token->getToken());
-            $user = $this->provider->getResourceOwner($token);
+            $user  = $this->provider->getResourceOwner($token);
             return AuthenticationResult::success(
                 $user->getEmail(),
                 $user->getFirstName(),

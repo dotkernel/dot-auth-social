@@ -4,12 +4,16 @@ This package is a wrapper for [thephpleague/oauth2-client](https://github.com/th
 It's goal is to authenticate users though facebook and return credentials and user details.
 
 ![OSS Lifecycle](https://img.shields.io/osslifecycle/dotkernel/dot-auth-social)
-![PHP from Packagist (specify version)](https://img.shields.io/packagist/php-v/dotkernel/dot-auth-social)
+![PHP from Packagist (specify version)](https://img.shields.io/packagist/php-v/dotkernel/dot-auth-social/1.1.0)
 
 [![GitHub issues](https://img.shields.io/github/issues/dotkernel/dot-auth-social)](https://github.com/dotkernel/dot-social-auth/issues)
 [![GitHub forks](https://img.shields.io/github/forks/dotkernel/dot-auth-social)](https://github.com/dotkernel/dot-social-auth/network)
 [![GitHub stars](https://img.shields.io/github/stars/dotkernel/dot-auth-social)](https://github.com/dotkernel/dot-social-auth/stargazers)
-[![GitHub license](https://img.shields.io/github/license/dotkernel/dot-auth-social)](https://github.com/dotkernel/dot-social-auth/blob/1.0.0/LICENSE.md)
+[![GitHub license](https://img.shields.io/github/license/dotkernel/dot-auth-social)](https://github.com/dotkernel/dot-social-auth/blob/1.1.0/LICENSE.md)
+
+[![Build Static](https://github.com/dotkernel/dot-cli/actions/workflows/static-analysis.yml/badge.svg?branch=3.0)](https://github.com/dotkernel/dot-cli/actions/workflows/static-analysis.yml)
+
+[![SymfonyInsight](https://insight.symfony.com/projects/b9489f03-14e3-441f-aefd-e3b549b4917e/big.svg)](https://insight.symfony.com/projects/b9489f03-14e3-441f-aefd-e3b549b4917e)
 
 ## Installation
 

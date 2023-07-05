@@ -7,6 +7,7 @@ use Dot\AuthSocial\Service\FacebookService as Subject;
 use League\OAuth2\Client\Provider\FacebookUser;
 use League\OAuth2\Client\Provider\Facebook;
 use League\OAuth2\Client\Token\AccessToken;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use DateTimeImmutable;
 use Exception;
@@ -17,10 +18,13 @@ use Exception;
  */
 class FacebookAuthenticationServiceTest extends TestCase
 {
-    private $accessToken;
+    private AccessToken|MockObject $accessToken;
 
-    private $provider;
+    private Facebook|MockObject $provider;
 
+    /**
+     * @throws \PHPUnit\Framework\MockObject\Exception
+     */
     protected function setUp(): void
     {
         $this->provider = $this->createMock(Facebook::class);
@@ -64,6 +68,9 @@ class FacebookAuthenticationServiceTest extends TestCase
         $this->assertEmpty($result->getExpiresAt());
     }
 
+    /**
+     * @throws \PHPUnit\Framework\MockObject\Exception
+     */
     public function testAuthenticate()
     {
         $resourceOwner = $this->createMock(FacebookUser::class);

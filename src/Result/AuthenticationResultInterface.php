@@ -20,7 +20,7 @@ interface AuthenticationResultInterface
 
     public function getRefreshToken(): ?string;
 
-    public function getExpiresAt(): ?DateTimeImmutable;
+    public function getExpiresAt(): DateTimeImmutable|false;
 
     public function getArrayCopy(): array;
 }

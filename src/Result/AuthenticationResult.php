@@ -83,12 +83,12 @@ class AuthenticationResult implements AuthenticationResultInterface
         return $this->refreshToken;
     }
 
-    public function getExpiresAt(): ?DateTimeImmutable
+    public function getExpiresAt(): DateTimeImmutable|false
     {
         try {
-            return DateTimeImmutable::createFromFormat('U', $this->expiresIn);
+            return DateTimeImmutable::createFromFormat('U', strval($this->expiresIn));
         } catch (Throwable $e) {
-            return null;
+            return false;
         }
     }
 

@@ -13,7 +13,7 @@ It's goal is to authenticate users though facebook and return credentials and us
 
 [![Build Static](https://github.com/dotkernel/dot-auth-social/actions/workflows/static-analysis.yml/badge.svg?branch=1.0)](https://github.com/dotkernel/dot-auth-social/actions/workflows/static-analysis.yml)
 
-[![SymfonyInsight](https://insight.symfony.com/projects/6919fca1-57ca-426e-add7-0c1f901efeab/big.svg)](https://insight.symfony.com/projects/b9489f03-14e3-441f-aefd-e3b549b4917e)
+[![SymfonyInsight](https://insight.symfony.com/projects/6919fca1-57ca-426e-add7-0c1f901efeab/big.svg)](https://insight.symfony.com/projects/6919fca1-57ca-426e-add7-0c1f901efeab)
 
 ## Installation
 

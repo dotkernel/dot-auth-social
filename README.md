@@ -9,7 +9,7 @@ It's goal is to authenticate users though facebook and return credentials and us
 [![GitHub issues](https://img.shields.io/github/issues/dotkernel/dot-auth-social)](https://github.com/dotkernel/dot-social-auth/issues)
 [![GitHub forks](https://img.shields.io/github/forks/dotkernel/dot-auth-social)](https://github.com/dotkernel/dot-social-auth/network)
 [![GitHub stars](https://img.shields.io/github/stars/dotkernel/dot-auth-social)](https://github.com/dotkernel/dot-social-auth/stargazers)
-[![GitHub license](https://img.shields.io/github/license/dotkernel/dot-auth-social)](https://github.com/dotkernel/dot-social-auth/blob/1.0.0/LICENSE.md)
+[![GitHub license](https://img.shields.io/github/license/dotkernel/dot-auth-social)](https://github.com/dotkernel/dot-auth-social/blob/1.0/LICENSE.md)
 
 [![Build Static](https://github.com/dotkernel/dot-auth-social/actions/workflows/static-analysis.yml/badge.svg?branch=1.0)](https://github.com/dotkernel/dot-auth-social/actions/workflows/static-analysis.yml)
 

@@ -5,7 +5,7 @@
          colors="true">
     <testsuites>
         <testsuite name="Dot\\AuthSocial">
-        <directory>./test</directory>
+        <directory>./tests</directory>
         </testsuite>
     </testsuites>
     <coverage/>
@@ -15,3 +15,4 @@
         </include>
     </source>
 </phpunit>
+<?xml version="1.0" encoding="UTF-8"?>

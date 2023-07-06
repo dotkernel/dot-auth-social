@@ -29,7 +29,7 @@ class FacebookServiceFactory
         return new FacebookService($provider);
     }
 
-    private function validateCredentials(array $credentials)
+    private function validateCredentials(array $credentials): void
     {
         foreach ($credentials as $key => $value) {
             if (empty($value)) {

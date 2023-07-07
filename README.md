@@ -1,15 +1,19 @@
-# dot-social-auth
+# dot-auth-social
 
 This package is a wrapper for [thephpleague/oauth2-client](https://github.com/thephpleague/oauth2-client) social providers.
 It's goal is to authenticate users though facebook and return credentials and user details.
 
 ![OSS Lifecycle](https://img.shields.io/osslifecycle/dotkernel/dot-auth-social)
-![PHP from Packagist (specify version)](https://img.shields.io/packagist/php-v/dotkernel/dot-auth-social)
+![PHP from Packagist (specify version)](https://img.shields.io/packagist/php-v/dotkernel/dot-auth-social/1.1.0)
 
-[![GitHub issues](https://img.shields.io/github/issues/dotkernel/dot-auth-social)](https://github.com/dotkernel/dot-social-auth/issues)
-[![GitHub forks](https://img.shields.io/github/forks/dotkernel/dot-auth-social)](https://github.com/dotkernel/dot-social-auth/network)
-[![GitHub stars](https://img.shields.io/github/stars/dotkernel/dot-auth-social)](https://github.com/dotkernel/dot-social-auth/stargazers)
-[![GitHub license](https://img.shields.io/github/license/dotkernel/dot-auth-social)](https://github.com/dotkernel/dot-social-auth/blob/1.0.0/LICENSE.md)
+[![GitHub issues](https://img.shields.io/github/issues/dotkernel/dot-auth-social)](https://github.com/dotkernel/dot-auth-social/issues)
+[![GitHub forks](https://img.shields.io/github/forks/dotkernel/dot-auth-social)](https://github.com/dotkernel/dot-auth-social/network)
+[![GitHub stars](https://img.shields.io/github/stars/dotkernel/dot-auth-social)](https://github.com/dotkernel/dot-auth-social/stargazers)
+[![GitHub license](https://img.shields.io/github/license/dotkernel/dot-auth-social)](https://github.com/dotkernel/dot-auth-social/blob/1.0/LICENSE.md)
+
+[![Build Static](https://github.com/dotkernel/dot-auth-social/actions/workflows/static-analysis.yml/badge.svg?branch=1.0)](https://github.com/dotkernel/dot-auth-social/actions/workflows/static-analysis.yml)
+
+[![SymfonyInsight](https://insight.symfony.com/projects/6919fca1-57ca-426e-add7-0c1f901efeab/big.svg)](https://insight.symfony.com/projects/6919fca1-57ca-426e-add7-0c1f901efeab)
 
 ## Installation
 

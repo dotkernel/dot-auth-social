@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Dot\AuthSocial\Factory;
 
 use Dot\AuthSocial\Service\FacebookService;
@@ -7,10 +9,8 @@ use League\OAuth2\Client\Provider\Facebook as Provider;
 use Psr\Container\ContainerInterface;
 use RuntimeException;
 
-/**
- * Class FacebookServiceFactory
- * @package Dot\AuthSocial\Factory
- */
+use function sprintf;
+
 class FacebookServiceFactory
 {
     public function __invoke(ContainerInterface $container): FacebookService
@@ -20,16 +20,16 @@ class FacebookServiceFactory
         $this->validateCredentials($credentials);
 
         $provider = new Provider([
-            'clientId' => $credentials['client_id'],
-            'clientSecret' => $credentials['client_secret'],
-            'redirectUri' => $credentials['redirect_uri'],
+            'clientId'        => $credentials['client_id'],
+            'clientSecret'    => $credentials['client_secret'],
+            'redirectUri'     => $credentials['redirect_uri'],
             'graphApiVersion' => $credentials['graph_api_version'],
         ]);
 
         return new FacebookService($provider);
     }
 
-    private function validateCredentials(array $credentials)
+    private function validateCredentials(array $credentials): void
     {
         foreach ($credentials as $key => $value) {
             if (empty($value)) {

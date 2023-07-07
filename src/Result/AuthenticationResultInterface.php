@@ -1,13 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Dot\AuthSocial\Result;
 
 use DateTimeImmutable;
 
-/**
- * Interface AuthenticationResultInterface
- * @package Dot\AuthSocial\Result
- */
 interface AuthenticationResultInterface
 {
     public function getMessages(): ?array;
@@ -20,7 +18,7 @@ interface AuthenticationResultInterface
 
     public function getRefreshToken(): ?string;
 
-    public function getExpiresAt(): ?DateTimeImmutable;
+    public function getExpiresAt(): DateTimeImmutable|false;
 
     public function getArrayCopy(): array;
 }

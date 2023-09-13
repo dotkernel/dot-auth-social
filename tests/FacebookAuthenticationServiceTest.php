@@ -104,5 +104,9 @@ class FacebookAuthenticationServiceTest extends TestCase
         $this->assertEmpty($result->getRefreshToken());
         $this->assertInstanceOf(DateTimeImmutable::class, $result->getExpiresAt());
         $this->assertEquals($this->accessToken->getExpires(), $result->getExpiresAt()->format('U'));
+        $this->assertIsString($result->getFirstName());
+        $this->assertIsString($result->getLastName());
+        $this->assertIsString($result->getFullName());
+        $this->assertIsArray($result->getArrayCopy());
     }
 }

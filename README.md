@@ -23,6 +23,7 @@ It's goal is to authenticate users though facebook and return credentials and us
 ## Installation
 
 Run the following command in your project directory
+
 ```php
 $ composer require dotkernel/dot-auth-social
 ```
@@ -44,7 +45,7 @@ return [
 ];
 ```
 
-## Note : Don't forger to put your credentials in the array.
+## Note : Don't forger to put your credentials in the array
 
 ## Usage
 

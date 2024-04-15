@@ -2,7 +2,7 @@ docs_dir: docs/book
 site_dir: docs/html
 extra:
   project: Packages
-  current_version: v3
+  current_version: v1
   versions:
     - v1
 nav:

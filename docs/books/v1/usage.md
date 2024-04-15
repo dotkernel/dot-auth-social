@@ -55,4 +55,4 @@ class FacebookControllerFactory
 }
 ```
 
-Make sure to register your controller with the factory in ``ConfigProvider``.
+Make sure to register your controller with the factory in `ConfigProvider`.

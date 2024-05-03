@@ -11,15 +11,20 @@ It's goal is to authenticate users though facebook and return credentials and us
 [![GitHub stars](https://img.shields.io/github/stars/dotkernel/dot-auth-social)](https://github.com/dotkernel/dot-auth-social/stargazers)
 [![GitHub license](https://img.shields.io/github/license/dotkernel/dot-auth-social)](https://github.com/dotkernel/dot-auth-social/blob/1.0/LICENSE.md)
 
-[![Build Static](https://github.com/dotkernel/dot-auth-social/actions/workflows/static-analysis.yml/badge.svg?branch=1.0)](https://github.com/dotkernel/dot-auth-social/actions/workflows/static-analysis.yml)
+[![Build Static](https://github.com/dotkernel/dot-auth-social/actions/workflows/continuous-integration.yml/badge.svg?branch=1.0)](https://github.com/dotkernel/dot-auth-social/actions/workflows/continuous-integration.yml)
 [![codecov](https://codecov.io/gh/dotkernel/dot-auth-social/graph/badge.svg?token=VIHN1HK8DR)](https://codecov.io/gh/dotkernel/dot-auth-social)
 
 [![SymfonyInsight](https://insight.symfony.com/projects/6919fca1-57ca-426e-add7-0c1f901efeab/big.svg)](https://insight.symfony.com/projects/6919fca1-57ca-426e-add7-0c1f901efeab)
 
+## Requirements
+
+- PHP >= 8.1
+
 ## Installation
 
 Run the following command in your project directory
-```bash
+
+```php
 $ composer require dotkernel/dot-auth-social
 ```
 
@@ -40,7 +45,7 @@ return [
 ];
 ```
 
-#### Note : Don't forger to put your credentials in the array.
+## Note : Don't forger to put your credentials in the array
 
 ## Usage
 
@@ -99,6 +104,4 @@ class FacebookControllerFactory
 }
 ```
 
-Make sure to register your controller with the factory in ``ConfigProvider``.
-
-
+Make sure to register your controller with the factory in `ConfigProvider`.

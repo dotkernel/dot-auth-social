@@ -17,4 +17,4 @@ return [
 ];
 ```
 
-#### Note : Don't forger to put your credentials in the array.
+## Note : Don't forger to put your credentials in the array

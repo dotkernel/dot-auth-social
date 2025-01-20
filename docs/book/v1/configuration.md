@@ -2,7 +2,7 @@
 
 After installing, add the `ConfigProvider` class to your configuration aggregate.
 
-Create a new file `social-authentication.global.php` in `config/autoload` with the following contents :
+Create a new file `social-authentication.global.php` in `config/autoload` with the following contents:
 
 ```php
 return [
@@ -17,4 +17,4 @@ return [
 ];
 ```
 
-## Note : Don't forger to put your credentials in the array
+> Don't forget to put your credentials in the array.

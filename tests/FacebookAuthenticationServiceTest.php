@@ -74,7 +74,7 @@ class FacebookAuthenticationServiceTest extends TestCase
         $resourceOwner = $this->createMock(FacebookUser::class);
         $resourceOwner->method('getEmail')->willReturn('test@dotkernel.com');
         $resourceOwner->method('getFirstName')->willReturn('Team');
-        $resourceOwner->method('getLastName')->willReturn('DotKernel');
+        $resourceOwner->method('getLastName')->willReturn('Dotkernel');
 
         $this->provider
             ->expects($this->once())

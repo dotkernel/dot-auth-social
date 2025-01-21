@@ -6,7 +6,7 @@
     "homepage": "https://github.com/dotkernel/dot-auth-social",
     "authors": [
         {
-            "name": "DotKernel Team",
+            "name": "Dotkernel Team",
             "email": "team@dotkernel.com"
         }
     ],
@@ -20,19 +20,19 @@
         "dotkernel"
     ],
     "require": {
-        "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
-        "laminas/laminas-servicemanager": "^3.22",
+        "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
+        "laminas/laminas-servicemanager": "^3.22 || ^4.0",
         "league/oauth2-facebook" : "^2.2",
         "league/oauth2-client" : "^2.6"
     },
     "require-dev": {
-        "laminas/laminas-coding-standard": "^2.5",
+        "laminas/laminas-coding-standard": "^3.0",
         "phpunit/phpunit": "^10.5",
         "vimeo/psalm": "^5.20"
     },
     "autoload": {
         "psr-4": {
-            "Dot\\AuthSocial\\": "src"
+            "Dot\\AuthSocial\\": "src/"
         }
     },
     "autoload-dev": {
@@ -43,7 +43,8 @@
     "scripts": {
         "check": [
             "@cs-check",
-            "@tests"
+            "@test",
+            "@static-analysis"
         ],
         "cs-check": "phpcs",
         "cs-fix": "phpcbf",

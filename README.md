@@ -17,11 +17,11 @@
 
 ## Requirements
 
-- PHP >= 8.1
+- **PHP**: 8.1, 8.2, 8.3 or 8.4
 
 ## Installation
 
-Run the following command in your project directory
+Run the following command in your project directory:
 
 ```shell
 composer require dotkernel/dot-auth-social
@@ -29,7 +29,7 @@ composer require dotkernel/dot-auth-social
 
 After installing, add the `ConfigProvider` class to your configuration aggregate.
 
-Create a new file `social-authentication.global.php` in `config/autoload` with the following contents :
+Create a new file `social-authentication.global.php` in `config/autoload` with the following contents:
 
 ```php
 return [

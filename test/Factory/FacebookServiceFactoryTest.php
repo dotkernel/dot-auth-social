@@ -38,7 +38,7 @@ class FacebookServiceFactoryTest extends TestCase
 
         $result = (new FacebookServiceFactory())($container);
 
-        $this->assertInstanceOf(FacebookService::class, $result);
+        $this->assertSame(FacebookService::class, $result::class);
     }
 
     /**

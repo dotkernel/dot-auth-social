@@ -29,9 +29,15 @@ class FacebookService implements AuthenticationServiceInterface
     {
         try {
             /** @var AccessToken $token */
-            $token = $this->provider->getAccessToken('authorization_code', ['code' => $code]);
-            $token = $this->provider->getLongLivedAccessToken($token->getToken());
-            $user  = $this->provider->getResourceOwner($token);
+            $token          = $this->provider->getAccessToken('authorization_code', ['code' => $code]);
+            $longLivedToken = $this->provider->getLongLivedAccessToken($token->getToken());
+            $token          = new AccessToken([
+                'access_token'  => $longLivedToken->getToken(),
+                'refresh_token' => $token->getRefreshToken(),
+                'expires'       => $token->getExpires(),
+            ]);
+
+            $user = $this->provider->getResourceOwner($token);
             return AuthenticationResult::success(
                 $user->getEmail(),
                 $user->getFirstName(),

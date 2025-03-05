@@ -1,6 +1,6 @@
 # dot-auth-social
 
-Dotkernel's component used to authenticate users through facebook and return credentials and user details.
+Dotkernel's component used to authenticate users through Facebook and return credentials and user details.
 
 > dot-auth-social is a wrapper on top of [thephpleague/oauth2-client](https://github.com/thephpleague/oauth2-client) social providers.
 

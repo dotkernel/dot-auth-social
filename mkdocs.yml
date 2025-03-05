@@ -13,7 +13,7 @@ nav:
       - Configuration: v1/configuration.md
       - Usage: v1/usage.md
 site_name: dot-auth-social
-site_description: "Dotkernel's component used to authenticate users through facebook and return credentials and user details"
+site_description: "Dotkernel's component used to authenticate users through Facebook and return credentials and user details"
 repo_url: "https://github.com/dotkernel/dot-auth-social"
 plugins:
   - search

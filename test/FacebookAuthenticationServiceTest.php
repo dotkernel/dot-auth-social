@@ -96,7 +96,7 @@ class FacebookAuthenticationServiceTest extends TestCase
         $subject = new Subject($this->provider);
 
         $result = $subject->authenticate('code');
-        $this->assertInstanceOf(AuthenticationResultInterface::class, $result);
+        $this->assertContainsOnlyInstancesOf(AuthenticationResultInterface::class, [$result]);
 
         $this->assertTrue($result->isValid());
         $this->assertEmpty($result->getMessages());

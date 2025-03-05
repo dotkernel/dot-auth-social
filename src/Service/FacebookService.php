@@ -9,6 +9,8 @@ use League\OAuth2\Client\Provider\Facebook as Provider;
 use League\OAuth2\Client\Token\AccessToken;
 use Throwable;
 
+use function assert;
+
 class FacebookService implements AuthenticationServiceInterface
 {
     protected Provider $provider;
@@ -29,13 +31,9 @@ class FacebookService implements AuthenticationServiceInterface
     {
         try {
             /** @var AccessToken $token */
-            $token          = $this->provider->getAccessToken('authorization_code', ['code' => $code]);
-            $longLivedToken = $this->provider->getLongLivedAccessToken($token->getToken());
-            $token          = new AccessToken([
-                'access_token'  => $longLivedToken->getToken(),
-                'refresh_token' => $token->getRefreshToken(),
-                'expires'       => $token->getExpires(),
-            ]);
+            $token = $this->provider->getAccessToken('authorization_code', ['code' => $code]);
+            $token = $this->provider->getLongLivedAccessToken($token->getToken());
+            assert($token instanceof AccessToken);
 
             $user = $this->provider->getResourceOwner($token);
             return AuthenticationResult::success(

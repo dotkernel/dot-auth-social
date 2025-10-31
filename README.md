@@ -1,6 +1,6 @@
 # dot-auth-social
 
-Dotkernel's component used to authenticate users through Facebook and return credentials and user details.
+Dotkernel's component, used to authenticate users through Facebook and return credentials and user details.
 
 > dot-auth-social is a wrapper on top of [thephpleague/oauth2-client](https://github.com/thephpleague/oauth2-client) social providers.
 
@@ -11,7 +11,7 @@ Documentation is available at: https://docs.dotkernel.org/dot-auth-social/.
 ## Badges
 
 ![OSS Lifecycle](https://img.shields.io/osslifecycle/dotkernel/dot-auth-social)
-![PHP from Packagist (specify version)](https://img.shields.io/packagist/php-v/dotkernel/dot-auth-social/1.4.0)
+![PHP from Packagist (specify version)](https://img.shields.io/packagist/php-v/dotkernel/dot-auth-social/1.5.0)
 
 [![GitHub issues](https://img.shields.io/github/issues/dotkernel/dot-auth-social)](https://github.com/dotkernel/dot-auth-social/issues)
 [![GitHub forks](https://img.shields.io/github/forks/dotkernel/dot-auth-social)](https://github.com/dotkernel/dot-auth-social/network)
@@ -24,7 +24,7 @@ Documentation is available at: https://docs.dotkernel.org/dot-auth-social/.
 
 ## Requirements
 
-- **PHP**: 8.1, 8.2, 8.3 or 8.4
+- **PHP**: 8.2, 8.3, 8.4 or 8.5
 
 ## Installation
 
@@ -85,9 +85,9 @@ class FacebookController extends AbstractActionController
 
         $result = $this->service->authenticate($code);
         if (! $result->isValid()) {
-            // invalid authentication, check $result->getMessages() for errors.
+            // invalid authentication: check $result->getMessages() for errors.
         } else {
-            // valid authentication, use $result->getArrayCopy() to get the user details
+            // valid authentication: use $result->getArrayCopy() to get the user details
         }
     }
 }

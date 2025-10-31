@@ -2,10 +2,9 @@
 
 ## Supported Versions
 
-
 | Version | Supported          | PHP Version                                                                                                     |
 |---------|--------------------|-----------------------------------------------------------------------------------------------------------------|
-| 1.x     | :white_check_mark: | ![PHP from Packagist (specify version)](https://img.shields.io/packagist/php-v/dotkernel/dot-auth-social/1.1.2) |
+| 1.x     | :white_check_mark: | ![PHP from Packagist (specify version)](https://img.shields.io/packagist/php-v/dotkernel/dot-auth-social/1.5.0) |
 
 ## Reporting Potential Security Issues
 
@@ -22,7 +21,7 @@ When reporting issues, please provide the following information:
 We request that you contact us via the email address above and give the
 project contributors a chance to resolve the vulnerability and issue a new
 release prior to any public exposure; this helps protect the project's
-users, and provides them with a chance to upgrade and/or update in order to
+users and provides them with a chance to upgrade and/or update to
 protect their applications.
 
 

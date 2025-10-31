@@ -17,4 +17,4 @@ return [
 ];
 ```
 
-> Don't forget to put your credentials in the array.
+> Remember to put your credentials in the array.

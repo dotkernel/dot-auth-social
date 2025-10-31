@@ -30,9 +30,9 @@ class FacebookController extends AbstractActionController
 
         $result = $this->service->authenticate($code);
         if (! $result->isValid()) {
-            // invalid authentication, check $result->getMessages() for errors.
+            // invalid authentication: check $result->getMessages() for errors.
         } else {
-            // valid authentication, use $result->getArrayCopy() to get the user details
+            // valid authentication: use $result->getArrayCopy() to get the user details
         }
     }
 }

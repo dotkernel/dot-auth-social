@@ -5,66 +5,133 @@ declare(strict_types=1);
 namespace DotTest\AuthSocial\Factory;
 
 use Dot\AuthSocial\Factory\FacebookServiceFactory;
-use Dot\AuthSocial\Service\FacebookService;
-use PHPUnit\Framework\MockObject\Exception;
+use DotTest\AuthSocial\Fixture\InMemoryContainer;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
-use Psr\Container\ContainerInterface;
 use RuntimeException;
+
+use function parse_str;
+use function parse_url;
+
+use const PHP_URL_QUERY;
 
 class FacebookServiceFactoryTest extends TestCase
 {
-    /**
-     * @throws Exception
-     */
-    public function testCanCreateFactory(): void
+    private const array CREDENTIALS = [
+        'client_id'         => 'client-id',
+        'client_secret'     => 'client-secret',
+        'redirect_uri'      => 'https://example.test/callback',
+        'graph_api_version' => 'v19.0',
+    ];
+
+    public function testCreatesServiceFromConfig(): void
     {
-        $container = $this->createMock(ContainerInterface::class);
+        $url = (new FacebookServiceFactory())($this->container(self::CREDENTIALS))->getAuthorizationUrl();
+        $this->assertStringStartsWith('https://www.facebook.com/v19.0/dialog/oauth', $url);
 
-        $credentials = [
-            'social_authentication' => [
-                'facebook' => [
-                    'client_id'         => 1,
-                    'client_secret'     => 123,
-                    'redirect_uri'      => 'testUri',
-                    'graph_api_version' => 'v2.4',
-                ],
-            ],
-        ];
+        parse_str((string) parse_url($url, PHP_URL_QUERY), $query);
+        $this->assertSame('client-id', $query['client_id']);
+        $this->assertSame('https://example.test/callback', $query['redirect_uri']);
+    }
 
-        $container->expects($this->once())
-            ->method('get')
-            ->with('config')
-            ->willReturn($credentials);
+    public function testAcceptsZeroAsValue(): void
+    {
+        $credentials                  = self::CREDENTIALS;
+        $credentials['client_secret'] = '0';
 
-        $result = (new FacebookServiceFactory())($container);
+        $url = (new FacebookServiceFactory())($this->container($credentials))->getAuthorizationUrl();
 
-        $this->assertSame(FacebookService::class, $result::class);
+        $this->assertStringStartsWith('https://www.facebook.com/v19.0/dialog/oauth', $url);
     }
 
     /**
-     * @throws Exception
+     * @return iterable<string, array{string}>
      */
-    public function testFactoryWillThrowException(): void
+    public static function requiredKeyProvider(): iterable
     {
-        $container = $this->createMock(ContainerInterface::class);
+        foreach (self::CREDENTIALS as $key => $value) {
+            yield $key => [$key];
+        }
+    }
 
-        $credentials = [
-            'social_authentication' => [
-                'facebook' => [
-                    'client_id'         => 1,
-                    'client_secret'     => '',
-                    'redirect_uri'      => '',
-                    'graph_api_version' => '',
-                ],
-            ],
-        ];
-
-        $container->expects($this->once())
-            ->method('get')
-            ->with('config')
-            ->willReturn($credentials);
+    #[DataProvider('requiredKeyProvider')]
+    public function testThrowsWhenKeyIsMissing(string $key): void
+    {
+        $credentials = self::CREDENTIALS;
+        unset($credentials[$key]);
 
         $this->expectException(RuntimeException::class);
-        (new FacebookServiceFactory())($container);
+        $this->expectExceptionMessage('Value for key `social_authentication.facebook.' . $key . '` cannot be empty');
+
+        (new FacebookServiceFactory())($this->container($credentials));
+    }
+
+    #[DataProvider('requiredKeyProvider')]
+    public function testThrowsWhenValueIsEmpty(string $key): void
+    {
+        $credentials       = self::CREDENTIALS;
+        $credentials[$key] = '';
+
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage('Value for key `social_authentication.facebook.' . $key . '` cannot be empty');
+
+        (new FacebookServiceFactory())($this->container($credentials));
+    }
+
+    public function testThrowsWhenValueIsNotScalar(): void
+    {
+        $credentials              = self::CREDENTIALS;
+        $credentials['client_id'] = ['client-id'];
+
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage('Value for key `social_authentication.facebook.client_id` cannot be empty');
+
+        (new FacebookServiceFactory())($this->container($credentials));
+    }
+
+    public function testThrowsWhenConfigServiceIsMissing(): void
+    {
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage('Value for key `social_authentication.facebook.client_id` cannot be empty');
+
+        (new FacebookServiceFactory())(new InMemoryContainer());
+    }
+
+    public function testThrowsWhenConfigIsNotArray(): void
+    {
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage('Service `config` must be an array');
+
+        (new FacebookServiceFactory())(new InMemoryContainer(['config' => 'invalid']));
+    }
+
+    public function testThrowsWhenSocialAuthenticationIsNotArray(): void
+    {
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage('Config key `social_authentication` must be an array');
+
+        (new FacebookServiceFactory())(new InMemoryContainer([
+            'config' => ['social_authentication' => 'invalid'],
+        ]));
+    }
+
+    public function testThrowsWhenFacebookConfigIsNotArray(): void
+    {
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage('Config key `social_authentication.facebook` must be an array');
+
+        (new FacebookServiceFactory())(new InMemoryContainer([
+            'config' => ['social_authentication' => ['facebook' => 'invalid']],
+        ]));
+    }
+
+    /**
+     * @param array<string, mixed> $credentials
+     */
+    private function container(array $credentials): InMemoryContainer
+    {
+        return new InMemoryContainer([
+            'config' => ['social_authentication' => ['facebook' => $credentials]],
+        ]);
     }
 }

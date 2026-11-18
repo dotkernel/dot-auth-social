@@ -5,26 +5,29 @@ declare(strict_types=1);
 namespace DotTest\AuthSocial;
 
 use Dot\AuthSocial\ConfigProvider;
+use Dot\AuthSocial\Factory\FacebookServiceFactory;
+use Dot\AuthSocial\Service\AuthenticationServiceInterface;
 use Dot\AuthSocial\Service\FacebookService;
 use PHPUnit\Framework\TestCase;
 
 class ConfigProviderTest extends TestCase
 {
-    protected array $config;
-
-    protected function setup(): void
+    public function testInvokeReturnsDependencies(): void
     {
-        $this->config = (new ConfigProvider())();
+        $configProvider = new ConfigProvider();
+
+        $this->assertSame(['dependencies' => $configProvider->getDependencies()], $configProvider());
     }
 
-    public function testHasDependencies(): void
+    public function testDependencies(): void
     {
-        $this->assertArrayHasKey('dependencies', $this->config);
-    }
-
-    public function testDependenciesHasFactories(): void
-    {
-        $this->assertArrayHasKey('factories', $this->config['dependencies']);
-        $this->assertArrayHasKey(FacebookService::class, $this->config['dependencies']['factories']);
+        $this->assertSame([
+            'aliases'   => [
+                AuthenticationServiceInterface::class => FacebookService::class,
+            ],
+            'factories' => [
+                FacebookService::class => FacebookServiceFactory::class,
+            ],
+        ], (new ConfigProvider())->getDependencies());
     }
 }

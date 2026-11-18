@@ -1,7 +1,7 @@
 {
     "name": "dotkernel/dot-auth-social",
     "type": "library",
-    "description": "Authentication wrapper for social providers",
+    "description": "Authentication wrapper for social providers, with PSR-11 factories",
     "license": "MIT",
     "homepage": "https://github.com/dotkernel/dot-auth-social",
     "authors": [
@@ -20,16 +20,16 @@
         "dotkernel"
     ],
     "require": {
-        "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
-        "laminas/laminas-servicemanager": "^3.22 || ^4.0",
+        "php": "~8.3.0 || ~8.4.0 || ~8.5.0 || ~8.6.0",
         "league/oauth2-client" : "^2.6",
-        "league/oauth2-facebook" : "^2.2"
+        "league/oauth2-facebook" : "^2.2",
+        "psr/container": "^1.1 || ^2.0"
     },
     "require-dev": {
         "laminas/laminas-coding-standard": "^3.0",
         "phpstan/phpstan": "^2.1",
         "phpstan/phpstan-phpunit": "^2.0",
-        "phpunit/phpunit": "^10.5"
+        "phpunit/phpunit": "^12.5"
     },
     "autoload": {
         "psr-4": {

@@ -5,44 +5,26 @@ declare(strict_types=1);
 namespace Dot\AuthSocial\Result;
 
 use DateTimeImmutable;
-use Throwable;
+use DateTimeInterface;
 
-use function is_string;
-use function strval;
+use function array_values;
 use function trim;
 
 class AuthenticationResult implements AuthenticationResultInterface
 {
-    private ?array $messages;
-
-    private ?string $identity;
-
-    private ?string $firstName;
-
-    private ?string $lastName;
-
-    private ?string $accessToken;
-
-    private ?string $refreshToken;
-
-    private ?int $expiresIn;
-
+    /**
+     * @param list<string>|null $messages
+     * @param int|null $expires Unix timestamp when the access token expires.
+     */
     public function __construct(
-        ?array $messages = null,
-        ?string $identity = null,
-        ?string $firstName = null,
-        ?string $lastName = null,
-        ?string $accessToken = null,
-        ?string $refreshToken = null,
-        ?int $expiresIn = null
+        private readonly ?array $messages = null,
+        private readonly ?string $identity = null,
+        private readonly ?string $firstName = null,
+        private readonly ?string $lastName = null,
+        private readonly ?string $accessToken = null,
+        private readonly ?string $refreshToken = null,
+        private readonly ?int $expires = null,
     ) {
-        $this->messages     = $messages;
-        $this->identity     = $identity;
-        $this->firstName    = $firstName;
-        $this->lastName     = $lastName;
-        $this->accessToken  = $accessToken;
-        $this->refreshToken = $refreshToken;
-        $this->expiresIn    = $expiresIn;
     }
 
     public function isValid(): bool
@@ -50,6 +32,9 @@ class AuthenticationResult implements AuthenticationResultInterface
         return empty($this->messages);
     }
 
+    /**
+     * @return list<string>|null
+     */
     public function getMessages(): ?array
     {
         return $this->messages;
@@ -72,7 +57,9 @@ class AuthenticationResult implements AuthenticationResultInterface
 
     public function getFullName(): ?string
     {
-        return trim($this->firstName . ' ' . $this->lastName);
+        $fullName = trim($this->firstName . ' ' . $this->lastName);
+
+        return $fullName === '' ? null : $fullName;
     }
 
     public function getAccessToken(): ?string
@@ -85,35 +72,41 @@ class AuthenticationResult implements AuthenticationResultInterface
         return $this->refreshToken;
     }
 
-    public function getExpiresAt(): DateTimeImmutable|false
+    public function getExpiresAt(): ?DateTimeImmutable
     {
-        try {
-            return DateTimeImmutable::createFromFormat('U', strval($this->expiresIn));
-        } catch (Throwable $e) {
-            return false;
+        if ($this->expires === null) {
+            return null;
         }
+
+        return (new DateTimeImmutable())->setTimestamp($this->expires);
     }
 
     public static function success(
         string $identity,
-        string $firstName,
-        string $lastName,
+        ?string $firstName,
+        ?string $lastName,
         string $accessToken,
         ?string $refreshToken,
-        int $expiresIn
+        ?int $expires
     ): self {
-        return new self([], $identity, $firstName, $lastName, $accessToken, $refreshToken, $expiresIn);
+        return new self([], $identity, $firstName, $lastName, $accessToken, $refreshToken, $expires);
     }
 
-    public static function failed(?string $messages): self
+    public static function failed(string $message, string ...$messages): self
     {
-        if (is_string($messages)) {
-            return new self([$messages]);
-        }
-
-        return new self($messages);
+        return new self([$message, ...array_values($messages)]);
     }
 
+    /**
+     * @return array{
+     *     identity: string|null,
+     *     first_name: string|null,
+     *     last_name: string|null,
+     *     access_token: string|null,
+     *     refresh_token: string|null,
+     *     expires_at: string|null
+     * }
+     */
     public function getArrayCopy(): array
     {
         return [
@@ -122,8 +115,7 @@ class AuthenticationResult implements AuthenticationResultInterface
             'last_name'     => $this->getLastName(),
             'access_token'  => $this->getAccessToken(),
             'refresh_token' => $this->getRefreshToken(),
-            'expires_at'    => $this->getExpiresAt() instanceof DateTimeImmutable ?
-                $this->getExpiresAt()->format('Y-m-d H:i:s') : null,
+            'expires_at'    => $this->getExpiresAt()?->format(DateTimeInterface::ATOM),
         ];
     }
 }

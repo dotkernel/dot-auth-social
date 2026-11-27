@@ -18,9 +18,9 @@ Documentation is available at: https://docs.dotkernel.org/dot-auth-social/.
 [![GitHub stars](https://img.shields.io/github/stars/dotkernel/dot-auth-social)](https://github.com/dotkernel/dot-auth-social/stargazers)
 [![GitHub license](https://img.shields.io/github/license/dotkernel/dot-auth-social)](https://github.com/dotkernel/dot-auth-social/blob/1.0/LICENSE.md)
 
-[![Build Static](https://github.com/dotkernel/dot-auth-social/actions/workflows/continuous-integration.yml/badge.svg?branch=1.0)](https://github.com/dotkernel/dot-auth-social/actions/workflows/continuous-integration.yml)
+[![Build Static](https://github.com/dotkernel/dot-auth-social/actions/workflows/continuous-integration.yml/badge.svg?branch=1.x)](https://github.com/dotkernel/dot-auth-social/actions/workflows/continuous-integration.yml)
 [![codecov](https://codecov.io/gh/dotkernel/dot-auth-social/graph/badge.svg?token=VIHN1HK8DR)](https://codecov.io/gh/dotkernel/dot-auth-social)
-[![PHPStan](https://github.com/dotkernel/dot-auth-social/actions/workflows/static-analysis.yml/badge.svg?branch=1.0)](https://github.com/dotkernel/dot-auth-social/actions/workflows/static-analysis.yml)
+[![PHPStan](https://github.com/dotkernel/dot-auth-social/actions/workflows/static-analysis.yml/badge.svg?branch=1.x)](https://github.com/dotkernel/dot-auth-social/actions/workflows/static-analysis.yml)
 
 ## Requirements
 

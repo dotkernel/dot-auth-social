@@ -11,6 +11,7 @@ use Exception;
 use League\OAuth2\Client\Provider\Facebook;
 use League\OAuth2\Client\Provider\FacebookUser;
 use League\OAuth2\Client\Token\AccessToken;
+use PHPUnit\Framework\Attributes\AllowMockObjectsWithoutExpectations;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -27,7 +28,7 @@ class FacebookAuthenticationServiceTest extends TestCase
     {
         $this->provider = $this->createMock(Facebook::class);
 
-        $this->accessToken = $this->createMock(AccessToken::class);
+        $this->accessToken = $this->createStub(AccessToken::class);
         $this->accessToken->method('getToken')->willReturn('access token');
         $this->accessToken->method('getRefreshToken')->willReturn(null);
         $this->accessToken->method('getExpires')->willReturn((new DateTimeImmutable())->getTimestamp());
@@ -46,6 +47,7 @@ class FacebookAuthenticationServiceTest extends TestCase
         $this->assertSame('authorization_url', $url);
     }
 
+    #[AllowMockObjectsWithoutExpectations]
     public function testAuthenticateThrowsException()
     {
         $exception = new Exception('error');
@@ -71,7 +73,7 @@ class FacebookAuthenticationServiceTest extends TestCase
      */
     public function testAuthenticate()
     {
-        $resourceOwner = $this->createMock(FacebookUser::class);
+        $resourceOwner = $this->createStub(FacebookUser::class);
         $resourceOwner->method('getEmail')->willReturn('test@dotkernel.com');
         $resourceOwner->method('getFirstName')->willReturn('Team');
         $resourceOwner->method('getLastName')->willReturn('Dotkernel');
